@@ -1,0 +1,292 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Muro das Lamentações - Painel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  --bg:#f1f4f8; --surface:#ffffff; --ink:#12284c; --ink2:#3d4b66; --muted:#66728a; --line:#dbe1ea;
+  --accent:#0e5b92; --st0:#c3c9d3; --st1:#6aa3cb; --st2:#0e5b92; --st3:#12284c;
+  --pink:#e61f4f;
+  --warn:#7a5600; --warn-bg:#fff1c6; --ok:#00695c; --ok-bg:#d9f3ef;
+  --f-display:'Newsreader',Georgia,serif; --f-body:'IBM Plex Sans',system-ui,sans-serif; --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);padding-inline:clamp(16px,4vw,40px);padding-block:28px 56px}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 24px}
+h1{font:600 clamp(26px,4vw,36px)/1.1 var(--f-display);margin:0;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:6px 0 0;max-width:62ch}
+h2{font:600 12px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;min-width:0}
+.kpis{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px}
+.big{font:600 56px/1 var(--f-display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.big small{font-size:28px;color:var(--muted)}
+.cap{color:var(--ink2);margin:8px 0 0;font-size:13px}
+.stack{display:flex;gap:2px;height:14px;margin-top:16px}
+.stack i{display:block;min-width:4px;border-radius:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+.mini{display:flex;flex-direction:column;gap:6px;margin-top:14px;font-size:13px;color:var(--ink2)}
+.mini b{font-family:var(--f-mono);color:var(--ink);font-weight:500}
+.newl{margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line);list-style:none;display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--ink2)}
+.newl li{display:flex;gap:8px;overflow-wrap:anywhere}
+.newl li::before{content:'novo';font:500 11px var(--f-mono);background:var(--line);border-radius:3px;padding:0 6px;height:18px;line-height:18px;flex:none}
+.padl{border-top:0;margin-top:0;padding-top:0}
+.padl li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;padding:0;flex:none}
+.sub3{font:600 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 4px}
+.types{display:grid;grid-template-columns:1fr;gap:0}
+.ty{display:grid;grid-template-columns:minmax(0,1fr) 52px;grid-template-areas:"n v" "b b";gap:0 10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.ty .n{grid-area:n;font-size:13px}.ty .v{grid-area:v;text-align:right;font:500 14px var(--f-mono);font-variant-numeric:tabular-nums}
+.ty .v small{color:var(--muted);font-weight:400}
+.ty .b{grid-area:b;height:8px;background:var(--line);border-radius:2px;overflow:hidden;margin:4px 0}
+.ty .b i{display:block;height:100%;background:var(--accent);border-radius:2px}
+.ty .d{display:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bars{display:flex;align-items:flex-end;gap:14px;height:170px;padding-top:22px}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;min-width:0}
+.bar{width:100%;max-width:64px;background:var(--accent);border-radius:4px 4px 0 0;position:relative;min-height:2px}
+.bar.last{background:var(--st2)}
+.bval{font:500 13px var(--f-mono);font-variant-numeric:tabular-nums}
+.blab{font:12px var(--f-mono);color:var(--muted)}
+.hb{display:grid;grid-template-columns:34px 1fr 44px;gap:10px;align-items:start;margin-bottom:12px}
+.hb .tr{height:10px;background:var(--line);border-radius:2px;overflow:hidden}
+.hb .fl{height:100%;background:var(--accent);border-radius:2px}
+.hb .hbc{font-size:11.5px;color:var(--muted);margin-top:4px}
+.hb .n{font:12px var(--f-mono);color:var(--ink2)}
+.hb .p{font:12px var(--f-mono);color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{font:500 13px var(--f-body);background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.chip:focus-visible,.rowbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.thead,.row{display:grid;grid-template-columns:44px minmax(0,1fr) 140px 150px 210px 44px;gap:14px;align-items:center}
+.thead{font:600 11px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 4px 8px;border-bottom:1px solid var(--line)}
+.item{border-bottom:1px solid var(--line)}
+.rowbtn{all:unset;display:block;width:100%;cursor:pointer;padding:12px 4px;box-sizing:border-box}
+.rowbtn:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.prio{font:500 12px var(--f-mono);color:var(--ink2);border:1px solid var(--line);border-radius:4px;padding:2px 0;text-align:center}
+.prio.p0{background:var(--pink);color:#fff;border-color:var(--pink)}
+.tname{font-weight:500;overflow-wrap:anywhere}
+.tmeta{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:4px}
+.tag{font-size:11px;border-radius:3px;padding:1px 6px;background:var(--line);color:var(--ink2)}
+.tag.warn{background:var(--warn-bg);color:var(--warn)}
+.tag.ok{background:var(--ok-bg);color:var(--ok)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px}
+.pbar{display:flex;align-items:center;gap:8px}
+.pbar .tr{flex:1;height:8px;background:var(--line);border-radius:2px;overflow:hidden}
+.pbar .fl{height:100%;border-radius:2px}
+.pbar span{font:12px var(--f-mono);width:34px;text-align:right;color:var(--ink2)}
+.cells{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.cell{height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font:12px var(--f-mono);
+  background:color-mix(in srgb,var(--accent) calc(var(--v)*13%),var(--surface));border:1px solid var(--line);color:var(--ink)}
+.cell.z{color:var(--muted)}
+.tot{font:500 14px var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.detail{padding:4px 4px 18px 58px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.detail h4{font:500 12px var(--f-mono);color:var(--accent);margin:0 0 4px}
+.detail p{margin:0;font-size:12.5px;color:var(--ink2);white-space:pre-wrap;overflow-wrap:anywhere}
+.cellhead{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;font:11px var(--f-mono);color:var(--muted);text-align:center}
+.note{font-size:12px;color:var(--muted);margin:0}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:6px 9px;border-radius:4px;max-width:260px;z-index:9;opacity:0;transition:opacity .08s}
+.sig{border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--ink2);line-height:1.5}
+.sig b{display:block;color:var(--ink);font-weight:600}
+.sig a{color:var(--accent);text-decoration:none}
+.sig a:hover{text-decoration:underline}
+@media (max-width:900px){
+  .kpis,.grid2,.types{grid-template-columns:1fr}
+  .thead{display:none}
+  .row{grid-template-columns:40px minmax(0,1fr) auto;grid-template-areas:"p n t" ". s s" ". b b" ". c c"}
+  .row>:nth-child(1){grid-area:p}.row>:nth-child(2){grid-area:n}.row>:nth-child(6){grid-area:t}
+  .row>:nth-child(3){grid-area:s}.row>:nth-child(4){grid-area:b}.row>:nth-child(5){grid-area:c}
+  .detail{grid-template-columns:1fr;padding-left:4px}
+}
+@media (prefers-reduced-motion:reduce){#tip{transition:none}}
+</style></head><body>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Muro das Lamentações</h1>
+    <p class="sub">Andamento das tarefas da Controladoria nas reuniões quinzenais.</p>
+  </div>
+</header>
+
+<section class="kpis" aria-label="Indicadores gerais">
+  <div class="card">
+    <h2>Avanço geral</h2>
+    <div class="big" id="kAvanco"></div>
+    <p class="cap" id="kAvancoCap"></p>
+    <div class="stack" id="kStack"></div>
+    <div class="legend" id="kLegend"></div>
+    <div class="mini" id="kAvancoMini"></div>
+    <ul class="newl" id="kNovas" aria-label="Tarefas novas sem status"></ul>
+  </div>
+  <div class="card">
+    <h2>Ações feitas</h2>
+    <div class="big" id="kAcoes"></div>
+    <p class="cap" id="kAcoesCap"></p>
+    <h3 class="sub3">Por tipo de ação</h3>
+    <div class="types" id="types"></div>
+  </div>
+  <div class="card">
+    <h2>Em padronização</h2>
+    <div class="big" id="kPad"></div>
+    <p class="cap" id="kPadCap"></p>
+    <div class="mini" id="kPadMini"></div>
+    <h3 class="sub3">Tarefas em padronização</h3>
+    <ul class="newl padl" id="kPadList" aria-label="Tarefas em padronização"></ul>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Avanço e ações por tarefa</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filtrar por status"></div>
+  <div class="thead"><div>Prior.</div><div>Tarefa (Situação)</div><div>Status</div><div>Avanço</div>
+    <div><div class="cellhead"><span>22/07</span><span>12/08</span><span>26/08</span><span>23/09</span><span>14/10</span></div></div><div style="text-align:right">Total</div></div>
+  <div id="list"></div>
+  <p class="note" style="margin-top:12px">Clique em uma tarefa para ler o relato de cada reunião. Números nas células são as ações feitas naquela reunião. Em 16/09 não houve reunião.</p>
+</section>
+
+<section class="grid2">
+  <div class="card">
+    <h2>Ações feitas por reunião</h2>
+    <div class="bars" id="bars"></div>
+  </div>
+  <div class="card">
+    <h2>Avanço por prioridade</h2>
+    <div id="prio"></div>
+  </div>
+</section>
+<footer class="sig"><b>Leandro Natividade Silva</b>Gestão de Processos<br><a href="mailto:leandro.silva@espro.org.br">leandro.silva@espro.org.br</a></footer>
+</div>
+<div id="tip"></div>
+
+<script>
+const T=[{"id": 2, "name": "★ Registro na Competência", "prio": 0, "status": "Em andamento", "owner": "Martha e Elaine", "acts": [4, 3, 2, 1, 3], "tipos": {"LA": 5, "R": 1, "DE": 4, "AC": 3}, "pad": true, "ti": false, "texts": ["- levantamento das notas lançadas com período anterior à competência\n- Análise dos lançados X V360\n- foi realizada reunião com o time Financeiro\n- será compartilhada a ação junto ao time de contabilidade\n- Semanalmente será feita a cobrança com o time para garantir os lançamentos corretos\n- Será implementada uma nova plataforma de captura das Notas Fiscais (TOTVS Transmition) (Requer acompanhamento e análise do XML).\n- Elaborado um material de orientação de onde foram buscadas as falhas e orientações para lançamentos corretos.\n- Necessário entender como as notas estão sendo lançados em competências incorretas. O protheus possui travas mas requer investigação de como anda sim, são registradas notas fora da competência.", "- Estabelecida diretriz de classificação mensal de 3 meses (maio, junho e julho) - identificado aumento considerável de inconsistências.\n- Elaborada uma planilha de controle Protheus x V360 - de comparação dos lançamentos.\n- Foi identificado que todas as notas do Estoque foram lançadas, exceto - benefícios - vale transporte, mobi+, bilhetagem, além de lançamentos de reembolso de colaborador ao qual a nota fiscal não está sendo lançada. - Será alinhado com o Eder (DP.MTZ Benefícios)\n- Estimativa de aprox. 1000 notas mensais.\n- Necessidade de revisar a documentação padrão de Tesouraria para deixar claros os critérios de solicitação e pagamento de reembolsos (O colaborador deve indicar o CPF no momento pedido da nota (PL.TS.001 e PO.TS.001 não contemplam orientação).\n- Será avaliado status atual da implementação do Totvs transmition.", "- Mantendo contato com a área para acompanhamento. Foi percebido que a área está apresentando morosidade na execução e na responsabilização da demanda.\n- Após fechamento fiscal serão identificados os lançamentos realizados e pendentes para comunicação à área.\n- As notas de estoque serão comunicadas ao Facilities para verificação.\n- Os procedimentos estão em atualizaçao.\n-A área não está atuando proativamente para tratar sobre as rotinas de estoque.\n-A área de facilities realizou treinamento de estoque (entrada de notas) para as unidades sem envolver as áreas de contabilidade e fiscal.\nResponsabilidades \n* Compras: Cotação de fornecedores, negociação de valores, prazos de pagamento, cadastro de fornecedor, pré-nota.\nSe contratos - Gestão de Contratos: Incluir contrato no sistema para aprovação da controladoria para inclusão de saldo de contrato.\n* Contas a pagar: Recebimento e captura das notas fiscais e direcionam para tesouraria realizar o pagamento.\n*NF Tesouraria - formalizar relação por e-mail e compartilhar os documentos em pasta compartilhada \nNF Facilities (compras) -  Salvam as NF em drive compartilhado Fiscal/Facilities para classificação do fiscal e posteior envio à tesouria para pagamento. (Erro no preenchimento de CNPJ, competência incorreta. (Facilities devem inserir os documentos na planilha até Às 17h do dia do recebimento. Fiscal tem até Às 13h do dia seguinte para classificar.  \nNão contrato - 3 cotações, negociação - \n\n* Facilities:", "-O time contábil segue passando as notas que estão pendentes de entrada no Protheus, para a área apresentar devolutivas mas ainda sem muito retorno.\n- Após fechamento de setembro, agendar reunião com a gerente para apresentação dos resultados do trimestre, pendências e alinhamentos para tratativas.\n\n*Procedimentos pendentes de atualização - Levantar do processo quais situações estão impactando a entrega da contabilidade para que avaliem correções que atendam às necessidades.", "- Registros fora da competência já estão sendo melhor controladas e com validação da Martha.\n- Retornou a incidência de erros de registro fora da competência. Protheus não permite registrar lançamentos fora da competência. Na ultima semana houve o lançamento de 5 notas.\n- Identificado pela contabilidade lançamentos de concessionáirias registrados no sistema mas que não aparecem para a contabilidade por ausência de medição.\n\n*Procedimento escrito pendente validação (Elaine e Martha)."]}, {"id": 3, "name": "★ Padronização geral de base de dados/relatório de todas as áreas", "prio": 0, "status": "Em andamento", "owner": "Conforme relatório", "acts": [5, 3, 1, 3, 1], "tipos": {"AL": 2, "DE": 4, "R": 2, "TV": 4, "RS": 1}, "pad": true, "ti": true, "texts": ["- Recrutamento e Seleção - Alinhamento com a área de Cargos e Salários para alinhamento da estrutura de indicador. \n- Faturamento - alinhado o modelo de relatório (será testado no fechamento)\n- Captação de Recursos (estrutura montada, requer alinhamento com o Marcelo).\n- Benefícios - possuímos o relatório de consolidado (será testado neste mês).\n- Férias, 13º - foi realizada reunião com a Administração de Pessoal para análise. (Após fechamento de agosto será realizada nova reunião).", "- Recrutamento e Seleção, headcount e intermitente  - Relatório desenvolvido (em validação Maria Antônia)\n- Férias e 13º - Será realizada reunião com o DP.Folha para definições.\n- Faturamento - O relatório foi testado e identificadas necessidades de melhorias com ajustes no fechamento - Inicialmente, funcionou.\n- Benefícios ainda não iniciado junto à área.\n- Relatório de captação de recursos desenvolvidos (Em validação Marcelo).", "- Recrutamento e Seleção, headcount e intermitente  - Relatório desenvolvido - Será verificado follow com a Valéria em 27/08.\n\n- Férias e 13º - Analisando com o Roberto Blagin para investigação do que entra na composição e o que está faltando.\n\n- - Faturamento - Necessário aguardar o próximo fechamento para validar se o relatório está correto.\n\n- Benefícios ainda não iniciado junto à área. (GMUD em andamento. Necessário aguardar desenvolvimento).\n\n- Desenvolvimento Social - Everton validando com o Jorge o formato do relatório para power bi.\n\n- Relatório de captação de recursos desenvolvidos - Relatório Validado.", "- Recrutamento e Seleção, headcount e intermitente  - Relatório desenvolvido - Realizada apresentação para a Valéria e ajustes. - Aguardando \"de acordo\" da área.\n\n- Férias e 13º - Blagin transferiu demanda ao Rogério para análise. Rogério de férias. Retomar após 15/10.\n\n- Faturamento - Apresentou falhas. Houve necessidade de ajuste manual das fórmulas da planilha. - Concluído\n\n- Benefícios só avulsos - Apresentou erros: duplicidade de jovens e títulos. Estamos levantando todos os erros para reportar ao Rogério para tratativas em seu retorno de férias 15/10. Adicionar parâmetro para extração por tipo de benefício + adcionar colunas de data de admissão e rescisão do aprendiz.\n\n- Desenvolvimento Social - Pendência com o Jorge de disponibilização da base ao Everton para testes.", "- Recrutamento e Seleção - será realizada apresentação em 14/10\n\n- headcount e intermitente  - Relatório desenvolvido - Solicitação de ajustes.\n\n- Férias e 13º - Blagin transferiu demanda ao Rogério para análise. Rogério de férias. Retomar após 15/10. (Depende da TI)\n\n- Benefícios só avulsos - Apresentou erros: duplicidade de jovens e títulos. Estamos levantando todos os erros para reportar ao Rogério para tratativas em seu retorno de férias 15/10. Adicionar parâmetro para extração por tipo de benefício + adcionar colunas de data de admissão e rescisão do aprendiz (Depende da TI)\n\n- Desenvolvimento Social - Pendência com o Jorge de disponibilização da base ao Everton para testes."], "rog": true}, {"id": 4, "name": "Registro e histórico de logs das rotinas contábeis e de cadastros", "prio": 0, "status": "Em andamento", "owner": "Elaine", "acts": [0, 1, 0, 0, 1], "tipos": {"AL": 1, "RS": 1}, "pad": false, "ti": false, "texts": ["", "- Solicitado apoio gerencial devido informação sensível no módulo (em análise Martha Paiva).", "Aguardando retorno de férias da Martha para seguimento.", "Aguardando agenda com a Martha para alinhamentos.", "Aguardando agenda com a Martha para alinhamentos. Rogério ativou o autid. do Protheus. Estava desativado."]}, {"id": 5, "name": "Validar com TI se o campo \"classe de valor\" foi inserido de forma padrão no PDF do pedido de compras", "prio": 0, "status": "Padronização/Comunicado", "owner": "Ederson", "acts": [1, 1, 0, 1, 0], "tipos": {"TV": 2, "RS": 1}, "pad": false, "ti": false, "texts": ["- Foram conferidos alguns documentos e está sendo registrada a classe de valor (a partir de maio/26).", "Demanda finalizada. - Atualizar PO.SP.003-SOLICITAÇÃO DE COMPRAS", "Procedimento em atualização.", "Procedimento atualização - Noely validou. Pendente validação da coordenação ou gerência para publicação.", "- Pendente validação Nathalia (Dependente da Adm. Financeiro)"], "af": true}, {"id": 6, "name": "Inclusão de campo de filial no lançamento contábil", "prio": 0, "status": "Não Iniciado", "owner": "Ederson", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": true, "texts": ["", "Ainda não iniciado", "Ainda não iniciado", "Necessário alinhar com o Rogério para o desenvolvimento - (15/10).", "Necessário alinhar com o Rogério para o desenvolvimento - (15/10). (Depende da TI)"], "rog": true}, {"id": 7, "name": "Projeto da Reforma Tributária", "prio": 0, "status": "Em andamento", "owner": "Elaine", "acts": [1, 2, 2, 3, 0], "tipos": {"DE": 2, "TV": 2, "TR": 1, "AL": 3}, "pad": false, "ti": true, "texts": [".- Foi proposto um teste de ponta a ponta da reforma tributária (Entrada das notas fiscais, retenções,)\n- Necessário desenhar o processo/roteiro de testes.", "- Foram parametrizadas as adequações no ambiente de homologação. Porém, ao realizar testes em ambiente de testes foi identificado que os novos campos necessários ainda não estão disponíveis. - Informação comunicada ao TI.\n- Está previsto realizado treinamento na próxima sexta 14/08. Porém, depende da devolutiva do TI.", "- Foi realizado treinamento sobre a reforma tributária com o time (teórico). Porém, a área identificou que ainda existem pontos pendentes. Houve o questionamento ao TI do que temos e o que está pendente, inclusive pendências da Totvs.\n- TI sinaliza que está tudo pronto, porém ainda existem pendências identificadas pela área.\n- Dificuldades com acesso à base teste, muitas pessoas utilizando para testes paralelos, dificultando a realização dos testes da reforma tributária.(Necessidade de alinhamento gerencial Martha x Edu para dedicação de atendimento para essa demanda e quem derá o analista focal de TI que tratará essa demanda.)\n- Possuímos: Entrada de nota, classificação fiscal, financeiro, contábil.\n- Não possui: Etapa final de apuração.", "-Houve conversa com o Rogério para entendimento dos prazos, do que já está entregue e o que está pendente.\n- Houve navegação para testes de ponta a ponta. Porém, houve foi identificada uma necessidade relacionada à adiantamento.\n-Agendada reunião com o Rogério em 15/10 para tombamento de algumas rotinas para testes em produção.\n- Martha alinhou com o Eduardo quanto ao Rogério ser o ponto focal de atendimento, para o cumprimento do cronograma.", "- Reunião agenda com o Rogério para 15/10 (Depende da TI)."], "rog": true}, {"id": 8, "name": "Ativo imobilizado e Inventário", "prio": 1, "status": "Em andamento", "owner": "Ederson", "acts": [0, 2, 0, 2, 0], "tipos": {"R": 2, "LA": 1, "DE": 1}, "pad": false, "ti": false, "texts": ["- Ativo - analisando a planilha que recebemos da Consultoria de Inventário\n- Em 23/07 será realizada reunião de alinhamento para sinalização de alguns pontos identificados no entregável da consultoria", "- Realizada reunião, pontos discutidos. A consultoria apresentou nova planilha. Ederson fez avaliação e o resultado será considerado pela Martha e Elaine.", "Aguardando retorno de férias da Martha para seguimento.", "-Apresentação para a Martha realizada.\n-Ederson montou a base com as informações dos ativos quantificados - notebook, cadeira, mesa.", "- Reunião agendada para 19/10 para alinhamentos estratégicos com Operações, Adm.Financiero, Controladoria, Contabilidade."]}, {"id": 9, "name": "Estoque em geral", "prio": 1, "status": "Em andamento", "owner": "Martha, Elaine, Ederson, Vanderson", "acts": [3, 3, 0, 0, 1], "tipos": {"LA": 1, "AC": 2, "TV": 1, "DE": 1, "R": 1, "RS": 1}, "pad": true, "ti": false, "texts": ["- Revisão do cadastro de produtos para garantir a utilização correta, e lançamentos nas TES corretas.\n- Identificado que notas não foram lançadas dentro da competência. Notas Fiscais de Estoque devem ser imputadas no mesmo dia. (Atividade G1). - Monitoramento dos lançamentos de estoque.\n- Reunião em 22/07 para revisão de informações do processo para revisão da rotina.\n- Material disponibilizado para fechamento do estoque atendeu. Porém requer atualização. O usuário sinalizou não utilizar todas as informações do tutorial.", "- Revisado a parametrização do cadastro de produtos.\n- Reunião do dia 22/07 realizada. Houve o entendimento de como o time operacional está realizando o fechamento do estoque.\n- Acompanhamento do fechamento para avaliação dos lançamentos das notas dentro da competência.\n- Identificada necessidade de adequação do material de orientação de fechamento de estoque para que não trave o processo. \n- Reunião em 12/08 para revisão do tutorial de fechamento e avaliação do procedimento.", "- Procedimento de fechamento de estoque em desenvolimento.\n- Tutorial ainda não foi iniciada a revisão.", "- Procedimento e tutorial em revisão.\n- Revisão do formulário de obsolesência - Leandro passar FO atualizado para Ederson validar.", "- Procedimento será postergado.\n- Toturial ajustado. Concluído.\n- Ocorreram novos problemas com estoque."]}, {"id": 10, "name": "Condição de pagamento financeiro (parcelamento), classificação fiscal", "prio": 1, "status": "Em andamento", "owner": "Lu", "acts": [1, 1, 1, 0, 0], "tipos": {"AL": 1, "RS": 1, "DE": 1}, "pad": false, "ti": false, "texts": ["- Alinhamento com a Tesouraria, que sinalizou estar sendo tratado junto ao TI. (requer alinhamento interno da equipe).", "- Após ação da área fiscal de devolução dos lançamentos parcelados, não houve novas incidências.\n- Será inserido no processo de entrada de notas fiscais, bem como cruzamento do relação da plataforma a entrada da nota e conferência do relatório V360 x Contratos (ex: SP e Tik Tok). (Não é uma tarefa fiscal validar data de vencimento de notas fiscais).\n- Será levantada a métrica de quantos processos possuem urgência.", "- Não houve novas incidências com datas de vencimento.\n- Ref. V360 vs notas fiscais (contratos), está em análise pela Elaine. Adriano elaborou uma base de contratos,.", "-Ederson realizando análise da base de saldo dos contratros - para identificar quais fornecedores possuem saldo na contabilidade.", "- Ederson realizando conciliação dos fornecedores com base na planilha que o Adriano elaborou - Base de saldo dos contratos."]}, {"id": 11, "af": true, "name": "Gestão de Compras (manutenção no módulo do protheus)", "prio": 2, "status": "Em andamento", "owner": "Martha, Elaine, Ederson, Adriano.", "acts": [2, 1, 2, 1, 0], "tipos": {"DE": 3, "R": 1, "AC": 1, "AL": 1}, "pad": false, "ti": false, "texts": ["- Elaborado o banco de dados de gestão de contratos - Ctos. ativos, que possuem saldo e tiveram última medição em 2024 e 2025 para entendimento da Gerência para plano de ação (se serão pagos)..\n- Alteração em rotina entre compras e gestão de contratos - (Somente após trâmites de compras, são iniciadas as etapas executadas no Protheus pelo time de contratos).", "- Banco de dados atualizado.\n- Será realizada reunião com a gerência em 13/08 para apresentação o cenário atual para a tomada de decisão.", "- Foi realizada a reunião com a Gerência. Área adm financeira ficou de realizar alinhamento interno.\n- Controladoria está realizando o monitoramento das conciliações dos fornecedores com saldo em aberto para tomada de decisão da área.\n- Identificadas situações com a área que requerem análise da Martha.", "-Quadro de colabores da área reduzido, impactando a possibilidade de revisão pelos próximos dias.\n-Adriano já sinalizou os pontos de atenção para a área de Gestão de Contratos avaliar/implementar.\n- Controladoria inicia a consolidação do orçamento. Com a consolidação, será compartilhada uma base para revisão de todos os contratos, do orçamento para 2027. Eles precisam executar essa revisão antes do final do ano de 2026 (lançamento, aprovação do Saade), assim como renovação dos aluguéis. \n- Dada a situação, poderá ser postergado.", "- Orçamento está sendo finalizado, para possibilitar a revisão dos contratos.\n- Expectativa de ser realizada a renovação dos contratos de aluguél - necessário para gestão de contratos realizar as medições  e contabilidade a classificação.\n- Manutenção dos anos de 2024, 2025 e 2026 parado."]}, {"id": 12, "af": true, "name": "Provisão de Contratos", "prio": 2, "status": "Não Iniciado", "owner": "Martha, Elaine, Ederson, Adriano.", "acts": [0, 0, 1, 2, 1], "tipos": {"LA": 2, "DE": 1, "AL": 1}, "pad": false, "ti": true, "texts": ["- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- Realizada a análise das provisões - Foi apresentado para a área. Aguardando decisão da gerência adm. financeiro", "-Base elaborada pela controladoria, em avaliação pela contabilidade. (Análise do Ederson).\n- Ederson está alinhando com o Rogério o desenvolvimento de rotina para automatização da rotina de provisão e estorno da medição dos contratos.\n- Está sendo documentado pelo Rogério.", "- Reunião agenda com o Rogério para 15/10 (Depende da TI).\n- Existem contratos duplicados e a área não faz a baixa/saneamento. Não existe foram lógica de identificação desse erro sem investigação."], "rog": true}, {"id": 13, "af": true, "name": "Medições de Contratos", "prio": 2, "status": "Não Iniciado", "owner": "Martha, Elaine, Ederson, Adriano.", "acts": [0, 0, 1, 1, 1], "tipos": {"LA": 2, "DE": 1}, "pad": false, "ti": false, "texts": ["- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- Realizada a análise das provisões - Foi apresentado para a área. Aguardando decisão da gerência adm. financeiro", "-Base elaborada pela controladoria, em avaliação pela contabilidade. (Análise do Ederson).", "- Em andamento - Ederson está realizando a conciliação - Identificando contratos que não foram medidos onde será necessário extornar. Identificado fornecedores que não tiveram provissão realizada.\n- Quando a base de contratos está sem manutenção, mesmo quando um contrato é encerrado ou está sem saldo, ou em renovação, este contrato permanece gerando provissões para a contabilidade realizar e somente posteriormente essa situação é identificada, já tendo impactado o resultado do Espro."]}, {"id": 14, "name": "Análise de cadastro de naturezas - erro de conta contábil X produto", "prio": 2, "status": "Não Iniciado", "owner": "Elaine, Bruna, Ederson, Lu", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": true, "texts": ["", "-  ainda não iniciado.", "-  ainda não iniciado. Necessário ser tratado por ultimo.", "-  ainda não iniciado. Necessário ser tratado por ultimo.", "-  ainda não iniciado. Necessário ser tratado por ultimo.\n- Rogério está elaborando o cadastro via fluig. (Depende da TI)."], "rog": true}, {"id": 15, "name": "Preenchimento completo do cadastro de fornecedores (formulário X sistema)", "prio": 3, "status": "Em andamento", "owner": "Lu, Ederson", "acts": [1, 0, 3, 0, 0], "tipos": {"R": 1, "AL": 1, "DE": 2}, "pad": true, "ti": true, "texts": ["- Reunião inicial com TI onde foi falado sobre o formulário. Terá impactos relacionados à Reforma Tributária.", "- será desenvolvido o fluxo via Fluig.\n- Desenhar o fluxograma BPMS para desenvolvimento na plataforma", "- Realizado alinhamento com Rogério.\n- Fluxo de compra ativo de e fornecedores compartilhado para desenvolvimento.\n- Fluxo de produtos e transferência de equipamentos, doação - desenhado porém pendente de envio", "- Rogério já possui os fluxos para desenvolvimento no Fluig e elaboração da documentação (GMUD). Rogério pendente disponibilização para aprovação da área de contabilidade.", "- Rogério já possui os fluxos para desenvolvimento no Fluig e elaboração da documentação (GMUD). Rogério pendente disponibilização para aprovação da área de contabilidade."], "rog": true}, {"id": 16, "name": "Cadastros em geral (fornecedor, natureza, bloqueios (à bloquear)", "prio": 3, "status": "Não Iniciado", "owner": "Todos", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["", "-  ainda não iniciado.", "-  ainda não iniciado. (tratativas pontuais)", "-  ainda não iniciado. (Cadastro de produtos revisado regularmente devido à rotina de cadastro de estoque).", "-  ainda não iniciado. (Cadastro de produtos revisado regularmente devido à rotina de cadastro de estoque)."]}, {"id": 17, "name": "Desalinhamento entre cadastro de produtos X plano de contas", "prio": 3, "status": "Não Iniciado", "owner": "Ederson e Adriano", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["", "-  ainda não iniciado. (possui relacionamento com a tarefa Análise de cadastro de naturezas - erro de conta contábil X produto", "-  ainda não iniciado. Em situações diferentes contabilidade consulta controladoria para validar o que lançamento no orçamento.", "-  ainda não iniciado. Em situações diferentes contabilidade consulta controladoria para validar o que consta lançado no orçamento..\n- Planejar como atualizar o cadastro de produtos.", "-  ainda não iniciado. Em situações diferentes contabilidade consulta controladoria para validar o que consta lançado no orçamento..\n- Planejar como atualizar o cadastro de produtos."]}, {"id": 18, "name": "Preenchimento do código de natureza no cadastro de produto/serviço", "prio": 3, "status": "Em andamento", "owner": "Lu, Ederson", "acts": [1, 0, 3, 0, 0], "tipos": {"AL": 2, "DE": 2}, "pad": true, "ti": true, "texts": ["- Realizado alinhamento interno, necessário avaliar com TI como desenvolver o formato acordado.", "- será desenvolvido o fluxo via Fluig.\n- Desenhar o fluxograma BPMS para desenvolvimento na plataforma", "- Realizado alinhamento com Rogério.\n- Fluxo de compra ativo de e fornecedores compartilhado para desenvolvimento.\n- Fluxo de produtos e transferência de equipamentos, doação - desenhado porém pendente de envio", "- Rogério já possui os fluxos para desenvolvimento no Fluig e elaboração da documentação (GMUD). Rogério pendente disponibilização para aprovação da área de contabilidade.", "- Rogério já possui os fluxos para desenvolvimento no Fluig e elaboração da documentação (GMUD). Rogério pendente disponibilização para aprovação da área de contabilidade."], "rog": true}, {"id": 19, "name": "Entrega do rateio de benefícios entregue em atraso", "prio": 4, "status": "Não Iniciado", "owner": "Camila", "acts": [0, 1, 1, 1, 1], "tipos": {"RS": 3, "AL": 1}, "pad": false, "ti": true, "texts": ["", "-  ainda não iniciado. Pensar juntos em alguma ideia.\n- Área abriu GMUD de adequações de benefícios - Foi solicitada a participação.\n- Levantar número e SLA de desenvolvimento das GMUDs de Benefícios e comunicar contabilidade.", "- Área realizou a entrega dentro do prazo.\n- Em acompanhamento da contabilidade.", "- Área realizou a entrega dentro do prazo. Não apresentou erros.", "- Este mês já ocorreu uma entrega em atraso.\n- Realizao reforço para a área com relação ao lançamento em atraso.\n- Será desenvolvido workflow de alerta para as áreas que não respeitarem as datas ou com registro divergente - Desenvolvimento no Fluig (Rogério) (depende da TI)."], "rog": true}, {"id": 20, "name": "Dupla medição de benefícios (entrada e rateio)", "prio": 4, "status": "Não Iniciado", "owner": "Camila e Ederson", "acts": [0, 0, 0, 0, 1], "tipos": {"DE": 1}, "pad": false, "ti": false, "texts": ["", "-  ainda não iniciado.", "-  ainda não iniciado.", "-  ainda não iniciado. Será agendada reunião com o Blagin em 24/09", "- Em fase de testes.\n- Blagin adicionou um campo (RAT) para, durante o lançamento de pré nota, se ele for flegado, vai considerar o rateiro e desprezar a pré-nota.\n- Será testado no início de novembro."]}, {"id": 21, "name": "Emitir relatório de benefícios avulsos com títulos pagos e à pagar e relatório com todos os jovens não pagos", "prio": 4, "status": "Não Iniciado", "owner": "Simone, Elaine", "acts": [0, 0, 0, 0, 1], "tipos": {"AL": 1}, "pad": false, "ti": false, "texts": ["", "-  ainda não iniciado.", "-  ainda não iniciado.", "-  ainda não iniciado. Será agendada reunião com o Blagin em 24/09", "- Em tratativas entre Contabilidade e TI - Blagin."]}, {"id": 22, "name": "Aglutinação do INSS", "prio": 4, "status": "Em andamento", "owner": "Lu", "acts": [1, 0, 1, 1, 0], "tipos": {"AL": 1, "RS": 2}, "pad": false, "ti": true, "texts": ["- Identificado problema quando a Tesouraria realiza alguma atividade da área. TI está investigando a situação. Chamado 132664", "- Não recebemos retorno do chamado. Será inserido trâmite solicitando follow-up.", "- Este mês a aglutinação funcionou.\n- Ainda aguardando retorno do chamado.", "-Não houve indicação de erros neste mês.", "- Voltou a ocorrer erros. Depende da TI garantir que não ocorram erros."]}, {"id": 23, "name": "Adequação do relatório sem manipulações da posição do Contas a Pagar", "prio": 5, "status": "Não Iniciado", "owner": "Adriano e Ederson", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- (Atividades G1 e G9) bem como análise das provisões de 2026.", "- (Atividades G1 e G9) bem como análise das provisões de 2026.", "-Depende da conclusão de outras atividades para ser iniciado.", "-Depende da conclusão de outras atividades para ser iniciado."]}, {"id": 24, "name": "Eliminação das planilhas de lançamento", "prio": 6, "status": "Não Iniciado", "owner": "Martha e Elaine", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["Será iniciada após todas as adequações em andamento.", "Será iniciada após todas as adequações em andamento.", "Será iniciada após todas as adequações em andamento.", "-Depende da conclusão de outras atividades para ser iniciado.", "-Depende da conclusão de outras atividades para ser iniciado."]}, {"id": 25, "name": "Elaborar o processo e procedimento para obras/reformas das unidades.", "prio": null, "status": "", "owner": "", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["", "", "", "-Agendar reunião com as áreas para mapeamento do fluxograma.\n-Definir quem é o gestor/dono do projeto? É o Ger.Adm Fin ou o Ger Regional?\n(Contábil, Fiscal, Compras, Gestão de Contratos, Ger.Adm Fin, Operações, Captação de Recursos/Projetos, Mariana) - Fluxo total de ponta a ponta", "- Leandro agendar reunião com os envolvidos."]}, {"id": 26, "name": "Política de incentivos educacionais - Regras para indicação de CNPJ ou CPF na emissão das notas de reembolso de cursos,feiras, etc. (Entender se será utilizado na Paytrack)", "prio": null, "status": "", "owner": "", "acts": [0, 0, 0, 0, 1], "tipos": {"AL": 1}, "pad": false, "ti": false, "texts": ["", "", "", "-Agendar reunião com as áreas para deinifir regras e/ considerar o melhor formato para reembolso.\n(DO, Adm.Fin,Contabilidade, Controladoria, Martha, -Impacto, estão utilizando a rotina de reembolso em vez do rito de compras/estoque..)", "- Elaine solicitou à Pryscila do DO o que a área possui de controles para análise do que está associado às legislações.\n-  Provável que fique para 2027,"]}, {"id": 27, "name": "Lançamento de notas com status de baixa como perda (pode ter ocorrido o pagamento por terceiros CM) - identificado na obra de CTW.", "prio": null, "status": "", "owner": "", "acts": [0, 0, 0, 0, 0], "tipos": {}, "pad": false, "ti": false, "texts": ["", "", "", "", "- Necessidade de revisar os lançamentos padrão registrados como \"Outros Documentos\" - Baixa como perda, ao qual não estão subindo para a contabilidade."]}];
+const MEET=['22/07','12/08','26/08','23/09','14/10'];
+const TIPOS={DE:['Elaboração / desenvolvimento','relatório, base, planilha, fluxo, material ou diretriz produzido'],
+ AL:['Alinhamento / comunicação','conversa com área, TI ou gerência; pedido de apoio; escalonamento'],
+ R:['Reunião','reunião ou apresentação realizada'],
+ LA:['Levantamento / análise','mapeamento, análise ou avaliação de dados e situação'],
+ TV:['Testes / validação','teste de relatório ou rotina, conferência, validação pela área'],
+ AC:['Acompanhamento / monitoramento','acompanhamento de fechamento, lançamentos ou conciliações'],
+ RS:['Resultado / entrega confirmada','área entregou no prazo, rotina funcionou, demanda finalizada'],
+ TR:['Treinamento','treinamento realizado com o time']};
+
+const W={'Não Iniciado':0,'Em andamento':50,'Padronização/Comunicado':80,'Concluído':100};
+const COL={'Não Iniciado':'var(--st0)','Em andamento':'var(--st1)','Padronização/Comunicado':'var(--st2)','Concluído':'var(--st3)'};
+const $=s=>document.querySelector(s);
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e};
+const tip=$('#tip');
+function tipOn(node,text){
+  node.addEventListener('mousemove',e=>{tip.textContent=text;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+12,innerWidth-270)+'px';tip.style.top=(e.clientY+14)+'px'});
+  node.addEventListener('mouseleave',()=>tip.style.opacity=0);
+}
+const sum=a=>a.reduce((x,y)=>x+y,0);
+const tot=t=>sum(t.acts);
+const st=T.filter(t=>t.status), novas=T.filter(t=>!t.status);
+const pct=t=>W[t.status];
+const avg=a=>a.length?Math.round(sum(a.map(pct))/a.length):0;
+const byStatus=s=>st.filter(t=>t.status===s);
+const perMeet=MEET.map((_,i)=>sum(T.map(t=>t.acts[i])));
+const total=sum(perMeet);
+
+const mini=(box,rows)=>rows.forEach(([a,b])=>{const d=el('div');d.append(a+' ');d.appendChild(el('b',null,b));$(box).appendChild(d)});
+// KPIs
+$('#kAvanco').innerHTML=avg(st)+'<small>%</small>';
+$('#kAvancoCap').textContent=`média de ${st.length} tarefas com status`;
+['Concluído','Padronização/Comunicado','Em andamento','Não Iniciado'].forEach(s=>{
+  const n=byStatus(s).length;if(!n)return;
+  const i=el('i');i.style.cssText=`flex:${n};background:${COL[s]}`;tipOn(i,`${s}: ${n} tarefas`);$('#kStack').appendChild(i);
+  const sp=el('span');const sw=el('i','sw');sw.style.background=COL[s];sp.append(sw,`${s} (${n})`);$('#kLegend').appendChild(sp);
+});
+mini('#kAvancoMini',[['Total de tarefas:',String(T.length)],['Com status (entram na média):',String(st.length)],['Novas, sem status:',String(novas.length)]]);
+novas.forEach(t=>$('#kNovas').appendChild(el('li',null,t.name)));
+$('#kAcoes').textContent=total;
+$('#kAcoesCap').textContent=`ações concretas registradas em ${MEET.length} reuniões`;
+
+// Em padronização: concluídas / em padronização / demais em andamento
+const nConc=byStatus('Concluído').length;
+const isPad=t=>t.status!=='Concluído'&&(t.pad||t.status==='Padronização/Comunicado');
+const padL=st.filter(isPad);
+const nPad=padL.length;
+const nAnd=st.length-nConc-nPad;
+$('#kPad').innerHTML=nPad+'<small> de '+st.length+'</small>';
+$('#kPadCap').textContent=`tarefa${nPad===1?'':'s'} em padronização`;
+mini('#kPadMini',[
+  ['Concluídas:',`${nConc} de ${st.length}`],
+  ['Em padronização:',`${nPad} de ${st.length}`],
+  ['Em andamento:',`${nAnd} de ${st.length}`]
+]);
+padL.forEach(t=>$('#kPadList').appendChild(el('li',null,t.name.replace(/^★\s*/,''))));
+
+// filtros
+const FILTERS=[['Todas',()=>true],['Em andamento',t=>t.status==='Em andamento'],['Concluídas',t=>t.status==='Concluído'],['Padronização',t=>t.status!=='Concluído'&&(t.pad||t.status==='Padronização/Comunicado')],
+ ['Não iniciado',t=>t.status==='Não Iniciado'],['Novas',t=>!t.status],['Dependem da TI',t=>t.ti],['Dependem da Adm. Financeiro',t=>t.af],['Com o Rogério (TI)',t=>t.rog]];
+let cur=0;
+FILTERS.forEach(([n,f],i)=>{if(i>0&&!T.filter(f).length)return;const b=el('button','chip',`${n} (${T.filter(f).length})`);b.type='button';b.id='f'+i;b.setAttribute('aria-pressed',i===0);
+  b.onclick=()=>{cur=i;FILTERS.forEach((_,j)=>{const x=$('#f'+j);if(x)x.setAttribute('aria-pressed',j===i)});render()};$('#filters').appendChild(b)});
+
+function render(){
+  const list=$('#list');list.textContent='';
+  T.filter(FILTERS[cur][1]).forEach(t=>{
+    const item=el('div','item');
+    const btn=el('button','rowbtn');btn.type='button';btn.setAttribute('aria-expanded','false');
+    const row=el('div','row');
+    row.appendChild(el('div','prio'+(t.prio===0?' p0':''),t.prio==null?'novo':'P'+t.prio));
+    const nm=el('div');nm.appendChild(el('div','tname',t.name));
+    const meta=el('div','tmeta');
+    if(t.owner)meta.appendChild(el('span','tag',t.owner));
+    if(t.pad)meta.appendChild(el('span','tag ok','padronização'));
+    if(t.ti)meta.appendChild(el('span','tag warn','depende da TI'));
+    if(t.af)meta.appendChild(el('span','tag warn','depende da Adm. Financeiro'));
+    if(t.rog)meta.appendChild(el('span','tag warn','com o Rogério'));
+    if(t.status==='Não Iniciado'&&tot(t)>0)meta.appendChild(el('span','tag warn','status desatualizado?'));
+    if(t.status&&tot(t)===0)meta.appendChild(el('span','tag','sem ações'));
+    nm.appendChild(meta);row.appendChild(nm);
+    const s=el('div','pill');
+    if(t.status){const sw=el('i','sw');sw.style.background=COL[t.status];s.append(sw,t.status==='Padronização/Comunicado'?'Padronização':t.status)}else s.textContent='Sem status';
+    row.appendChild(s);
+    const pb=el('div','pbar');
+    if(t.status){const tr=el('div','tr');const fl=el('div','fl');fl.style.cssText=`width:${pct(t)}%;background:${COL[t.status]}`;tr.appendChild(fl);pb.append(tr,el('span',null,pct(t)+'%'));tipOn(pb,`${t.status} = ${pct(t)}% de avanço`)}
+    else pb.appendChild(el('span',null,'—'));
+    row.appendChild(pb);
+    const cells=el('div','cells');
+    t.acts.forEach((v,i)=>{const c=el('div','cell'+(v?'':' z'),v||'·');c.style.setProperty('--v',v);tipOn(c,`${MEET[i]}: ${v} ${v===1?'ação feita':'ações feitas'}`);cells.appendChild(c)});
+    row.appendChild(cells);
+    const tt=el('div','tot',tot(t));if(tot(t))tipOn(tt,Object.entries(t.tipos).sort((a,b)=>b[1]-a[1]).map(([k,v])=>TIPOS[k][0]+': '+v).join(' · '));row.appendChild(tt);
+    btn.appendChild(row);item.appendChild(btn);
+    const det=el('div','detail');det.hidden=true;
+    t.texts.forEach((x,i)=>{const d=el('div');d.appendChild(el('h4',null,MEET[i]));d.appendChild(el('p',null,x||'Sem registro.'));det.appendChild(d)});
+    item.appendChild(det);
+    btn.onclick=()=>{det.hidden=!det.hidden;btn.setAttribute('aria-expanded',!det.hidden)};
+    list.appendChild(item);
+  });
+}
+render();
+
+// barras por reunião
+const mx=Math.max(...perMeet);
+perMeet.forEach((v,i)=>{const c=el('div','bcol');c.appendChild(el('div','bval',v));
+  const b=el('div','bar'+(i===MEET.length-1?' last':''));b.style.height=(v/mx*100*.78)+'%';tipOn(b,`Reunião ${MEET[i]}: ${v} ações feitas`);c.append(b,el('div','blab',MEET[i]));$('#bars').appendChild(c)});
+
+// por prioridade
+[...new Set(st.map(t=>t.prio))].sort((a,b)=>a-b).forEach(p=>{
+  const g=st.filter(t=>t.prio===p),a=avg(g);
+  const r=el('div','hb');r.appendChild(el('span','n','P'+p));
+  const tr=el('div','tr');const fl=el('div','fl');fl.style.width=a+'%';tr.appendChild(fl);
+  const nc=g.filter(t=>t.status==='Concluído').length;
+  const mid=el('div');mid.append(tr,el('div','hbc',`${nc} de ${g.length} ${g.length===1?'concluída':'concluídas'}`));
+  r.appendChild(mid);r.appendChild(el('span','p',a+'%'));
+  tipOn(r,`Prioridade ${p}: ${g.length} ${g.length===1?'tarefa':'tarefas'}, ${sum(g.map(tot))} ações feitas`);$('#prio').appendChild(r)});
+
+// tipos de ação
+const cnt={};T.forEach(t=>Object.entries(t.tipos).forEach(([k,v])=>cnt[k]=(cnt[k]||0)+v));
+const mxT=Math.max(...Object.values(cnt));
+Object.entries(cnt).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+  const d=el('div','ty');d.appendChild(el('div','n',TIPOS[k][0]));
+  const val=el('div','v',String(v));const sm=el('small',null,' '+Math.round(v/total*100)+'%');val.appendChild(sm);d.appendChild(val);
+  const b=el('div','b');const i=el('i');i.style.width=(v/mxT*100)+'%';b.appendChild(i);d.appendChild(b);d.appendChild(el('div','d',TIPOS[k][1]));
+  tipOn(d,`${TIPOS[k][0]}: ${v} de ${total} ações. ${TIPOS[k][1]}`);$('#types').appendChild(d)});
+</script>
+</body></html>
